@@ -1,10 +1,13 @@
+@font-face {
+  font-family: 'Zen Dots';
+  src: url(./assets/fonts/ZenDots-Regular.ttf);
+}
+
 :root {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: "Zen Dots", Verdana, Geneva, Tahoma, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   background: #ffffff;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -20,7 +23,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  min-width: 320px;
+  min-width: 320px; 
   min-height: 100vh;
 }
 

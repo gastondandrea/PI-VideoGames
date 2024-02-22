@@ -1,0 +1,37 @@
+.container-landing{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #C6DBCF;
+    width: 90vw;
+    height: 100vh;
+    gap: 15vw;
+}
+
+.img-fondo{
+    width: 400px;
+}
+
+.form-landing{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 4px solid black;
+    border-radius: 16px;
+    gap:8vh;
+    width: 26vw;
+    height: 60vh;
+    background-color: #FFFFFF;
+    box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.25);
+}
+
+.form-landing img{
+    width: 120px;
+}
+
+.form-landing h1{
+    font-size: 40px;
+    text-shadow: 2px 4px 0px rgba(0, 0, 0, 0.20);
+    margin: 0;
+}

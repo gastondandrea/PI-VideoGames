@@ -1,0 +1,32 @@
+/***/
+/* Contenedor Seach */
+
+.navbar-search{
+    display: flex;
+}
+
+.navbar-search svg{
+    position: relative;
+    left: 45px;
+    top:3px;
+    border-right: 1px solid black;
+}
+
+.navbar-search input{
+    font-family: 'Zen Dots';
+    font-size: 16px;
+    border-radius: 38px;
+    width: 320px;
+    color: #2E4595;
+    padding-left: 50px;
+}
+
+.navbar-search input::placeholder{
+    font-family: 'Zen Dots';
+    font-size: 16px;
+    color: #2E4595;
+}
+
+.icono-search button{
+    all: unset;
+}
