@@ -25,7 +25,7 @@ function SeachBar(){
                 </svg>
             </button>
             </div>
-            <input className="input-search" type="text" placeholder='Search by name..' onChange={handleChange}/>
+            <input className="input-search" type="text" placeholder='Search by name..' value={name} onChange={handleChange}/>
         </div>
     )
 }

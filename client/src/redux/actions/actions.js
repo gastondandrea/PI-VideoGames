@@ -34,7 +34,7 @@ export function getVideogamesByName(name){
             const infoAPI = (await axios.get(`http://localhost:3001/videogames/?name=${name}`)).data;
             return dispatch({type: SEARCH_VIDEOGAMES, payload: infoAPI});
         } catch (error) {
-            console.log(error)
+            alert(error.response.data.error);
         }
     };
 }

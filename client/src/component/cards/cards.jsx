@@ -1,17 +1,17 @@
 import "./cards.css";
 import Card from "../card/card";
-import {useSelector, useDispatch} from "react-redux";
-import { useEffect } from "react";
-import { getAllVideogames } from "../../redux/actions/actions";
+// import {useSelector, useDispatch} from "react-redux";
+// import { useEffect } from "react";
 
-function Cards(){
 
-    const allVideogames = useSelector((state)=>state.allVideogames); 
-    const dispatch = useDispatch();
+function Cards({allVideogames}){
 
-    useEffect(()=>{
-        dispatch(getAllVideogames());
-    },[dispatch]);
+    // const allVideogames = useSelector((state)=>state.allVideogames);
+    // const dispatch = useDispatch();
+
+    // useEffect(()=>{
+    //     dispatch(getAllVideogames());
+    // },[dispatch]);
 
     return(
         <div className="container-cards">
