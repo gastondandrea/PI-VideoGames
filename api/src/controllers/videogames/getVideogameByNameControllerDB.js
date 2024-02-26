@@ -11,7 +11,7 @@ const getVideogameByNameControllerDB = async (name) => {
       }
     });
 
-    const videogameByNameDBFilter =  videogameByNameDB.filter((videogame)=>videogame.name.toLowerCase().includes(name.toLowerCase()));
+    const videogameByNameDBFilter = videogameByNameDB.length !== 0 ? videogameByNameDB.filter((videogame)=>videogame.name.toLowerCase().includes(name.toLowerCase())) : [];
 
     return videogameByNameDBFilter;
 }

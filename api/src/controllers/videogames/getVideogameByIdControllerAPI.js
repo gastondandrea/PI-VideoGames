@@ -9,7 +9,7 @@ const getVideogameByIdControllerAPI = async (id) => {
         description: infoApiDetail.description,
         platforms: infoApiDetail.platforms.map((platform)=>platform.platform.name),
         image: infoApiDetail.background_image,
-        released: infoApiDetail.released,
+        release_date: infoApiDetail.released,
         rating: infoApiDetail.rating,
         genres: infoApiDetail.genres.map(genre=>{
             return {

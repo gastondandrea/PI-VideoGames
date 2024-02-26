@@ -8,13 +8,13 @@ const getVideogameByNameControllerAPI = async (name) => {
     const videogameByNameApi = (await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&search=${name}`)).data;
     const {results} = videogameByNameApi;
     //Filtrado de datos
-    const videogameByNameApiFiltrado = results.map((videogame)=>{
+    const videogameByNameApiFiltrado = results.length !== 0 ? results.map((videogame)=>{
       return {
         id: videogame.id,
         name: videogame.name,
         description: videogame.description,
         platforms: videogame.platforms.map((platform)=>platform.platform.name),
-        image: videogame.image,
+        image: videogame.background_image,
         release_date: videogame.release_date,
         rating: videogame.rating,
         genres: videogame.genres.map((obj)=>{
@@ -24,7 +24,7 @@ const getVideogameByNameControllerAPI = async (name) => {
           }
         })
       };
-    })
+    }) : [];
     return videogameByNameApiFiltrado;
 };
 
