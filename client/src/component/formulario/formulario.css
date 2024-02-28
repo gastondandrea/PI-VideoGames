@@ -63,3 +63,13 @@
 .line{
     border-right: 2px solid black;
 }
+
+
+.error-menssage {
+    font-size: 10px;
+}
+
+.wrap{
+    display: flex;
+    flex-wrap: wrap;
+}

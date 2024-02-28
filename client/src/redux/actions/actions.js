@@ -1,4 +1,4 @@
-import { GET_ALL_VIDEOGAMES , GET_VIDEOGAME_DETAIL, CLEAN_DETAIL, SEARCH_VIDEOGAMES, FILTER_BY_GENRE, FILTER_BY_SOURCE, ORDER_VIDEOGAMES } from "./action-types";
+import { GET_ALL_VIDEOGAMES , GET_VIDEOGAME_DETAIL, CLEAN_DETAIL, SEARCH_VIDEOGAMES, FILTER_BY_GENRE, FILTER_BY_SOURCE, ORDER_VIDEOGAMES, POST_VIDEOGAMES, GET_ALL_GENRES } from "./action-types";
 import axios from "axios";
 
 export function getAllVideogames(){
@@ -11,6 +11,7 @@ export function getAllVideogames(){
         }
     }
 };
+
 
 export function getVideogameById(id){
     return async (dispatch) => {
@@ -41,21 +42,47 @@ export function getVideogamesByName(name){
 
 
 export const filterByGenre = (genre) =>{
-    return function(dispatch){
-        return dispatch({type: FILTER_BY_GENRE, payload: genre});
+    return {
+        type: FILTER_BY_GENRE, 
+        payload: genre
     };
 }
 
 export const filterBySource = (source) =>{
-    return function(dispatch){
-        return dispatch({type: FILTER_BY_SOURCE, payload: source});
+    return {
+        type: FILTER_BY_SOURCE, 
+        payload: source
     };
 }
     
 
 export const orderVideogames = (order) =>{
-    return function(dispatch){
-        return dispatch({type: ORDER_VIDEOGAMES, payload: order});
-    };
+    return {
+            type: ORDER_VIDEOGAMES,
+            payload: order
+        };
 }
 
+
+export function postVideogames(videogame){
+    return async (dispatch) => {
+        try {
+            const infoAPI = (await axios.post(`http://localhost:3001/videogames`, videogame)).data;
+            alert("Videogame Creado!");
+            return dispatch({type: POST_VIDEOGAMES, payload: infoAPI});
+        } catch (error) {
+            alert("Necesitas rellenar todos los campos")
+        }
+    }
+};
+
+export function getAllGenres(){
+    return async (dispatch) => {
+        try {
+            const infoAPI = (await axios.get(`http://localhost:3001/genres`)).data;
+            return dispatch({type: GET_ALL_GENRES, payload: infoAPI});
+        } catch (error) {
+            console.log(error);
+        }
+    }
+};

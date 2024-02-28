@@ -1,4 +1,5 @@
 import "./filterBar.css";
+import {Link} from "react-router-dom";
 import Order from "../order/order";
 import Filter from "../filter/filter";
 import Button from "../button/button"
@@ -8,7 +9,9 @@ function FilterBar(){
         <div className='container-filterbar'>
             <Order/>
             <Filter/>
-            <Button name="Add Videogame"/>
+            <Link to="/form">
+                <Button name="Add Videogame"/>
+            </Link>
         </div>
     )
 }

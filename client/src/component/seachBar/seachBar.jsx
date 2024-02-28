@@ -14,6 +14,7 @@ function SeachBar(){
 
     const onSearch = (n) =>{
         dispatch(getVideogamesByName(n));
+        setName("");
     }
     return(
         <div className='navbar-search'>

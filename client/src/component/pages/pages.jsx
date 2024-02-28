@@ -1,5 +1,4 @@
 import "./pages.css";
-import { useState } from "react";
 
 function Pages({
     totalItems,
@@ -13,12 +12,14 @@ function Pages({
 	const handlePageChange = (page) => {
 		setCurrentPage(page);
 		onPageChange(page);
+		window.scrollTo(0, 0);
 	};
 
 	const handlePrevPage = () => {
 		if (currentPage > 1) {
 			setCurrentPage(currentPage - 1);
 			onPageChange(currentPage - 1);
+			window.scrollTo(0, 0);
 		}
 	};
 
@@ -26,6 +27,7 @@ function Pages({
 		if (currentPage < totalPages) {
 			setCurrentPage(currentPage + 1);
 			onPageChange(currentPage + 1);
+			window.scrollTo(0, 0);
 		}
 	};
 
@@ -48,19 +50,21 @@ function Pages({
 	};
 
     return(
-        <div className="pagination">
+        <div className="container-pages">
 			<button
 				onClick={handlePrevPage}
 				disabled={currentPage === 1}
-				className={currentPage === 1 ? "is_disabled" : "text"}
+				className="button-page"
 			>
 				Prev
 			</button>
-			<ul>{renderPageNumbers()}</ul>
+			<div>
+				<ul>{renderPageNumbers()}</ul>
+			</div>
 			<button
 				onClick={handleNextPage}
 				disabled={currentPage === totalPages}
-				className={currentPage === totalPages ? "is_disabled" : "text"}
+				className="button-page"
 			>
 				Next
 			</button>

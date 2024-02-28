@@ -27,4 +27,8 @@ body {
   min-height: 100vh;
 }
 
+a {
+  text-decoration: none; /* Quita el subrayado */
+  color: inherit; /* Usa el color heredado */
+}
 

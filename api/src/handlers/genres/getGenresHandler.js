@@ -8,7 +8,7 @@ const getGenresHandler = async (req, res) => {
         const allGenreVideogamesAPI = await getGenresControllerAPI();
         // Enviar datos de la API a la BD
         const allGenreVideogamesBD = await getGenresControllerBD(allGenreVideogamesAPI);
-        res.status(200).json(allGenreVideogamesAPI);
+        res.status(200).json(allGenreVideogamesBD);
     } catch (error) {
         res.status(400).json({error: error.message});
     }

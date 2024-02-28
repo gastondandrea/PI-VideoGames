@@ -1,4 +1,4 @@
-import { GET_ALL_VIDEOGAMES, GET_VIDEOGAME_DETAIL, CLEAN_DETAIL, SEARCH_VIDEOGAMES, FILTER_BY_GENRE, FILTER_BY_SOURCE, ORDER_VIDEOGAMES} from "../actions/action-types";
+import { GET_ALL_VIDEOGAMES, GET_VIDEOGAME_DETAIL, CLEAN_DETAIL, SEARCH_VIDEOGAMES, FILTER_BY_GENRE, FILTER_BY_SOURCE, ORDER_VIDEOGAMES, POST_VIDEOGAMES, GET_ALL_GENRES} from "../actions/action-types";
 
 const initialState = {
     allVideogames:[],
@@ -6,6 +6,8 @@ const initialState = {
     detailVideogame: {},
     filterGenre: "defect",
     filterSource: "defect",
+    videogameCreate: {},
+    allGenres:[],
 }
     
 function reducer(state = initialState, action){
@@ -83,37 +85,47 @@ function reducer(state = initialState, action){
                     };
                 }
             }
-            case ORDER_VIDEOGAMES:
-                switch(action.payload){
-                    case "ascendente":
-                        const allVideogamesASC = [...state.allVideogames].sort((a, b) => a.name.localeCompare(b.name));
-                        return {
-                            ...state,
-                            allVideogames: allVideogamesASC
-                        };
-                    case "descendente":
-                        const allVideogamesDES = [...state.allVideogames].sort((a, b) => b.name.localeCompare(a.name));
-                        return {
-                            ...state,
-                            allVideogames: allVideogamesDES
-                        };
-                    case "higher-rating":
-                        const allVideogamesRatingHigher = [...state.allVideogames].sort((a, b) => b.rating - a.rating);
-                        return {
-                            ...state,
-                            allVideogames: allVideogamesRatingHigher
-                        };
-                    case "lower-rating":
-                        const allVideogamesRatingLower = [...state.allVideogames].sort((a, b) => a.rating - b.rating);
-                        return {
-                            ...state,
-                            allVideogames: allVideogamesRatingLower
-                        };
-                    default:
-                        return {
-                            ...state
-                        };
-                }
+        case ORDER_VIDEOGAMES:
+            switch(action.payload){
+                case "ascendente":
+                    const allVideogamesASC = [...state.allVideogames].sort((a, b) => a.name.localeCompare(b.name));
+                    return {
+                        ...state,
+                        allVideogames: allVideogamesASC
+                    };
+                case "descendente":
+                    const allVideogamesDES = [...state.allVideogames].sort((a, b) => b.name.localeCompare(a.name));
+                    return {
+                        ...state,
+                        allVideogames: allVideogamesDES
+                    };
+                case "higher-rating":
+                    const allVideogamesRatingHigher = [...state.allVideogames].sort((a, b) => b.rating - a.rating);
+                    return {
+                        ...state,
+                        allVideogames: allVideogamesRatingHigher
+                    };
+                case "lower-rating":
+                    const allVideogamesRatingLower = [...state.allVideogames].sort((a, b) => a.rating - b.rating);
+                    return {
+                        ...state,
+                        allVideogames: allVideogamesRatingLower
+                    };
+                default:
+                    return {
+                        ...state
+                    };
+            }
+        case POST_VIDEOGAMES:
+            return {
+                ...state,
+                videogameCreate: action.payload
+            };
+        case GET_ALL_GENRES:
+            return {
+                ...state,
+                allGenres: action.payload,
+            };
         default:
             return {
                 ...state
