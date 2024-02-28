@@ -2,7 +2,6 @@ function validate({
 	name,
 	description,
 	image,
-	release_date,
 	rating,
 	genres,
 	platforms,
@@ -10,46 +9,45 @@ function validate({
     const errors = {};
 
     if (!name) {
-		errors.name = "Este campo no puede estar vacío";
+		errors.name = "This field can not be blank";
 	}else if (name.length < 3) {
-		errors.name = "El nombre del juego no puede tener menos de 3 caracteres";
+		errors.name = "The game name cannot be less than 3 characters";
 	}else if(name.length > 30) {
-		errors.name = "El nombre del juego no puede superar los 30 caracteres";
+		errors.name = "The game name cannot exceed 30 characters";
 	}
 
 	if (name && !/^[A-Za-z0-9\s]+$/g.test(name)) {
-		errors.name = "El nombre del juego no puede contener carácteres especiales";
+		errors.name = "The game name cannot contain special characters";
 	}
     
 
     if (!image) {
-		errors.image = "Este campo no puede estar vacío";
+		errors.image = "This field can not be blank";
 	}
 
     if (!description) {
-		errors.description = "Este campo no puede estar vacío";
+		errors.description = "This field can not be blank";
 	}else if (description.length < 20) {
-		errors.description =
-			"La descripción debe contener como minimo 20 caracteres";
+		errors.description = "The description must contain at least 20 characters";
 	}
 
     if (rating < 1) {
-		errors.rating = "El rating no puede ser menor a 1";
+		errors.rating = "The rating cannot be less than 1";
 	} else if (rating > 10.0) {
-		errors.rating = "El rating no puede ser mayor a 10";
+		errors.rating = "The rating cannot be greater than 10";
 	}
     
     if(genres.length === 0){
-        errors.genres = "Debes agregar entre 1 a 6 genres";
+        errors.genres = "This field can not be blank";
     }else if(genres.length > 6) {
-		errors.genres = "No puedes agregar mas de 6 genres";
+		errors.genres = "";
 	}
 
 
 	if (platforms.length === 0) {
-		errors.platforms = "Debes agregar entre 1 a 6 plataformas";
+		errors.platforms = "This field can not be blank";
 	}else if(platforms.length > 6){
-        errors.platforms = "No puedes agregar mas de 6 plataformas";
+        errors.platforms = "";
     }
 
     return errors;

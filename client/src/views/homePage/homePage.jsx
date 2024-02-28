@@ -19,13 +19,17 @@ function HomePage() {
 	}, [dispatch]);
 
     // Paginación
+    // Page actual
 	const [currentPage, setCurrentPage] = useState(1);
+
 	const itemsPerPage = 15;
-
+    // ultimo indice
     const indexOfLastItem = currentPage * itemsPerPage;
+    // primer indice
 	const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    //pages actuales
     const currentItems = allVideogames.slice(indexOfFirstItem, indexOfLastItem);
-
+    //Set page actual
 	const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
 

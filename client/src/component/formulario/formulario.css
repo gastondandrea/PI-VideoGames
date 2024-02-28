@@ -67,9 +67,17 @@
 
 .error-menssage {
     font-size: 10px;
+    color: red;
 }
 
 .wrap{
     display: flex;
     flex-wrap: wrap;
+}
+
+.button-form{
+    font-family: "Zen Dots";
+    padding: 10px;
+    margin-top: 50px;
+    font-size: 16px;
 }

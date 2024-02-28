@@ -1,5 +1,4 @@
 import "./formulario.css";
-import Button from "../button/button";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {getAllGenres, postVideogames} from "../../redux/actions/actions";
@@ -28,15 +27,14 @@ function Formulario(){
         platforms: []
     });
 
-
     const [error, setError] = useState({
-		name: "Este campo no puede estar vacío",
-		image: "Este campo no puede estar vacío",
+		name: "This field can not be blank",
+		image: "This field can not be blank",
 		release_date: "",
-		description: "Este campo no puede estar vacío",
+		description: "This field can not be blank",
 		rating: "",
-		genres: "Debes agregar entre 1 a 6 generos",
-		platforms: "Debes agregar entre 1 a 6 plataformas",
+		genres: "",
+		platforms: "",
 	});
 
 
@@ -129,8 +127,12 @@ function Formulario(){
     //Función onSubmit
     const onSubmit = (event) => {
         event.preventDefault();
-        dispatch(postVideogames(valor))
-        navigate("/home")
+        if(!valor.name || !valor.description || !valor.genres || !valor.platforms || !valor.image){
+            alert("Ningún campo puede estar vacío");
+        }else{
+            dispatch(postVideogames(valor))
+            navigate("/home")
+        }
     }
 
 
@@ -197,7 +199,7 @@ function Formulario(){
                     <span>{valor.rating}</span>
                     <p className="error-menssage">{error.rating}</p>
                 </div>
-                <Button type="submit" name="Create"/>
+                <button type="submit" className="button-form" disabled={Object.values(error).some(errorMessage => errorMessage !== "")}>Create</button>
             </div>
         </form>
     )
