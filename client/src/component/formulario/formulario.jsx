@@ -127,12 +127,8 @@ function Formulario(){
     //Función onSubmit
     const onSubmit = (event) => {
         event.preventDefault();
-        if(!valor.name || !valor.description || !valor.genres || !valor.platforms || !valor.image){
-            alert("Ningún campo puede estar vacío");
-        }else{
-            dispatch(postVideogames(valor))
-            navigate("/home")
-        }
+        dispatch(postVideogames(valor))
+        navigate("/home")
     }
 
 

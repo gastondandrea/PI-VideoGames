@@ -3,6 +3,7 @@ function validate({
 	description,
 	image,
 	rating,
+	release_date,
 	genres,
 	platforms,
 }){

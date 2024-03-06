@@ -16,7 +16,7 @@ function Cards({allVideogames}){
     return(
         <div className="container-cards">
             {allVideogames.map((videogame, index)=>{
-                return <Card key={index} id={videogame.id} name={videogame.name} image={videogame.image} genres={videogame.genres}/>
+                return <Card key={index} id={videogame.id} name={videogame.name} image={videogame.image} genres={videogame.genres} />
             })}
         </div>
     )

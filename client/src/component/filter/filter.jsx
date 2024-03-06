@@ -26,13 +26,13 @@ function Filter(){
         <div className='container-filter'>
             <label>Filter:</label>
             <select name="filter-genres" defaultValue="defect" id="filter-genres" onChange={handleChangeGenre}>
-                <option value="defect">-</option>
+                <option value="defect">All</option>
                 {allGenres.map((genre)=>{
                     return <option value={genre.name}>{genre.name}</option>
                 })}
             </select>
             <select name="filter-source" defaultValue="defect" id="filter-source" onChange={handleChangeSource}>
-                <option value="defect">-</option>
+                <option value="defect">All</option>
                 <option value="api">API</option>
                 <option value="bbdd">BBDD</option>
             </select>
