@@ -4,7 +4,7 @@ import axios from "axios";
 export function getAllVideogames(){
     return async (dispatch) => {
         try {
-            const infoAPI = (await axios.get(`http://localhost:3001/videogames`)).data;
+            const infoAPI = (await axios.get(`https://pi-videogames-zsv9.onrender.com/videogames`)).data;
             return dispatch({type: GET_ALL_VIDEOGAMES, payload: infoAPI});
         } catch (error) {
             console.log(error);
@@ -16,7 +16,7 @@ export function getAllVideogames(){
 export function getVideogameById(id){
     return async (dispatch) => {
         try{
-            const infoAPI = (await axios.get(`http://localhost:3001/videogames/${id}`)).data;
+            const infoAPI = (await axios.get(`https://pi-videogames-zsv9.onrender.com/videogames/${id}`)).data;
             return dispatch({type: GET_VIDEOGAME_DETAIL, payload: infoAPI});
         } catch (error) {
             console.log(error);
@@ -32,7 +32,7 @@ export const cleanDetail = () =>{
 export function getVideogamesByName(name){
     return async (dispatch) => {
         try{
-            const infoAPI = (await axios.get(`http://localhost:3001/videogames/?name=${name}`)).data;
+            const infoAPI = (await axios.get(`https://pi-videogames-zsv9.onrender.com/videogames/?name=${name}`)).data;
             return dispatch({type: SEARCH_VIDEOGAMES, payload: infoAPI});
         } catch (error) {
             alert(error.response.data.error);
@@ -67,7 +67,7 @@ export const orderVideogames = (order) =>{
 export function postVideogames(videogame){
     return async (dispatch) => {
         try {
-            const infoAPI = (await axios.post(`http://localhost:3001/videogames`, videogame)).data;
+            const infoAPI = (await axios.post(`https://pi-videogames-zsv9.onrender.com/videogames`, videogame)).data;
             alert("Videogame Creado!");
             return dispatch({type: POST_VIDEOGAMES, payload: infoAPI});
         } catch (error) {
@@ -79,7 +79,7 @@ export function postVideogames(videogame){
 export function getAllGenres(){
     return async (dispatch) => {
         try {
-            const infoAPI = (await axios.get(`http://localhost:3001/genres`)).data;
+            const infoAPI = (await axios.get(`https://pi-videogames-zsv9.onrender.com/genres`)).data;
             return dispatch({type: GET_ALL_GENRES, payload: infoAPI});
         } catch (error) {
             console.log(error);
