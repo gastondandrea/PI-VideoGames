@@ -27,8 +27,8 @@ function Filter(){
             <label>Filter:</label>
             <select name="filter-genres" defaultValue="defect" id="filter-genres" onChange={handleChangeGenre}>
                 <option value="defect">All</option>
-                {allGenres.map((genre)=>{
-                    return <option value={genre.name}>{genre.name}</option>
+                {allGenres.map((genre, index)=>{
+                    return <option key={index} value={genre.name}>{genre.name}</option>
                 })}
             </select>
             <select name="filter-source" defaultValue="defect" id="filter-source" onChange={handleChangeSource}>

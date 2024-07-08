@@ -9,8 +9,8 @@ function DetailVideogame({videogameId}){
                 </h3>
                 <img src={videogameId.image} alt={videogameId.name} />
                 <div className="container-platforms">
-                    {videogameId.platforms?.map((platform)=>{
-                        return <p>{platform}</p>
+                    {videogameId.platforms?.map((platform, index)=>{
+                        return <p key={index}>{platform}</p>
                     })}
                 </div>
             </div>
@@ -19,8 +19,8 @@ function DetailVideogame({videogameId}){
                 <div className="container-description" dangerouslySetInnerHTML={{ __html: videogameId.description }}>
                 </div>
                 <div className="container-genres-detail">
-                    {videogameId.genres?.map((genre)=>{
-                        return <p>{genre.name}</p>
+                    {videogameId.genres?.map((genre, index)=>{
+                        return <p key={index}>{genre.name}</p>
                     })}
                 </div>
                 <p>Release date: {videogameId.release_date}</p>

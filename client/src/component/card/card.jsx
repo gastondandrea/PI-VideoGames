@@ -11,8 +11,8 @@ function Card(props){
                 <img src={props.image} alt={props.name} />
             </div>
             <div className="container-genres">
-                {props.genres.map((genre)=>{
-                    return <p>{genre.name}</p>
+                {props.genres.map((genre, index)=>{
+                    return <p key={index}>{genre.name}</p>
                 })}
             </div>
            
