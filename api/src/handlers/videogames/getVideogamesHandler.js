@@ -1,4 +1,4 @@
-const getVideogameByNameControllerAPI = require('../../controllers/videogames/getVideogameByNameControllerAPI');
+// const getVideogameByNameControllerAPI = require('../../controllers/videogames/getVideogameByNameControllerAPI');
 const getVideogameByNameControllerDB = require('../../controllers/videogames/getVideogameByNameControllerDB');
 const getVideogamesControllerAPI = require('../../controllers/videogames/getVideogamesControllerAPI');
 const getVideogamesControllerDB = require('../../controllers/videogames/getVideogamesControllerDB');
@@ -7,12 +7,16 @@ const getVideogamesHandler = async (req, res) => {
     const {name} = req.query;
     try {
         if(name){
-            const videogamesByNameAPI = await getVideogameByNameControllerAPI(name);
+            const videogamesByNameAPI = await getVideogamesControllerAPI();
+            // filtramos por nombre
+            const videogameByNameApiFiltrado = videogamesByNameAPI.filter((videogame) =>
+                videogame.name.toLowerCase().startsWith(name.toLowerCase())
+            );
             const videogamesByNameDB = await getVideogameByNameControllerDB(name);
-            if(videogamesByNameAPI.length === 0 && videogamesByNameDB.length === 0){
+            if(videogameByNameApiFiltrado.length === 0 && videogamesByNameDB.length === 0){
                 throw new Error(`No se encontro ningun videojuego con nombre: ${name}`)
             }
-            const videogameByName = [...videogamesByNameDB, ...videogamesByNameAPI];
+            const videogameByName = [...videogamesByNameDB, ...videogameByNameApiFiltrado];
             const videogameByName15 = videogameByName.slice(0, 15);
             res.status(200).json(videogameByName15);
         }else{

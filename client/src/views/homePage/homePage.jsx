@@ -5,43 +5,70 @@ import Pages from '../../component/pages/pages'
 
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllVideogames } from "../../redux/actions/actions";
+import { getAllVideogames, setIsSeach } from "../../redux/actions/actions";
+import Spinner from '../../component/spinner/spinner';
 
 
 function HomePage() {
+    // estado de carga
+    const isLoading = useSelector((state) => state.isLoading);
+    const isSeach = useSelector((state) => state.isSeach);
     const allVideogames = useSelector((state) => state.allVideogames);
-
     // Dispatch
-	const dispatch = useDispatch();
-
+    const dispatch = useDispatch();
+    
     useEffect(() => {
-		dispatch(getAllVideogames());
-	}, [dispatch]);
+        dispatch(getAllVideogames());
+    }, [dispatch]);
+
 
     // Paginación
     // Page actual
-	const [currentPage, setCurrentPage] = useState(1);
-
-	const itemsPerPage = 15;
-    // ultimo indice
+    const [currentPage, setCurrentPage] = useState(1);
+    
+    //candidad de card por pagina
+    const itemsPerPage = 15;
+    // ultimo card
     const indexOfLastItem = currentPage * itemsPerPage;
-    // primer indice
-	const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    //pages actuales
+    // primer card
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    //cards actuales
     const currentItems = allVideogames.slice(indexOfFirstItem, indexOfLastItem);
-    //Set page actual
-	const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+    // Restablecer la página actual cuando cambian los datos filtrados
+    useEffect(() => {
+        const totalItems = allVideogames.length;
+        const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+        if (currentPage > totalPages) {
+            setCurrentPage(1); // Ajusta la página a 1 si la página actual es inválida
+        }
+    }, [allVideogames, currentPage, itemsPerPage]);
+    
+    const onClose = () =>{
+        dispatch(getAllVideogames());
+        dispatch(setIsSeach(false));
+    }
 
     return(
         <div className='container-home'>
             <FilterBar/>
-            <Cards allVideogames={currentItems}/>
-            <Pages totalItems={allVideogames.length}
-				itemsPerPage={itemsPerPage}
-				onPageChange={paginate}
-				currentPage={currentPage}
-				setCurrentPage={setCurrentPage}/>
+            {isLoading ? (
+                <div className="loading-indicator">
+                    <Spinner />
+                </div>
+            ) : (
+                <>
+                    <Cards allVideogames={currentItems} /> 
+                    {isSeach ? <button className='cerrar_button' onClick={()=>onClose()}>x</button> : null}
+                    <Pages 
+                        totalItems={allVideogames.length}
+                        itemsPerPage={itemsPerPage}
+                        currentPage={currentPage}
+                        setCurrentPage={setCurrentPage}
+                    />
+                </>
+            )}
         </div>
     )
 }

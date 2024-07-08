@@ -1,6 +1,6 @@
 import "./seachBar.css";
 import { useState } from 'react';
-import { getVideogamesByName } from "../../redux/actions/actions";
+import { getVideogamesByName, setIsSeach } from "../../redux/actions/actions";
 import { useDispatch } from 'react-redux';
 
 function SeachBar(){
@@ -14,7 +14,8 @@ function SeachBar(){
 
     const onSearch = (n) =>{
         dispatch(getVideogamesByName(n));
-        setName("");
+        dispatch(setIsSeach(true));
+        setName("")
     }
     return(
         <div className='navbar-search'>

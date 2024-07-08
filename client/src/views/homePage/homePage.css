@@ -1,0 +1,9 @@
+.loading-indicator{
+    padding: 50px;
+}
+
+.cerrar_button{
+    position: absolute;
+    bottom:72vh;
+    left: 85vw;
+}

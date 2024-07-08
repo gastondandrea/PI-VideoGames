@@ -3,22 +3,20 @@ import "./pages.css";
 function Pages({
     totalItems,
 	itemsPerPage,
-	onPageChange,
 	currentPage,
 	setCurrentPage,
 }){
 
     const totalPages = Math.ceil(totalItems / itemsPerPage);
+
 	const handlePageChange = (page) => {
 		setCurrentPage(page);
-		onPageChange(page);
 		window.scrollTo(0, 0);
 	};
 
 	const handlePrevPage = () => {
 		if (currentPage > 1) {
 			setCurrentPage(currentPage - 1);
-			onPageChange(currentPage - 1);
 			window.scrollTo(0, 0);
 		}
 	};
@@ -26,7 +24,6 @@ function Pages({
 	const handleNextPage = () => {
 		if (currentPage < totalPages) {
 			setCurrentPage(currentPage + 1);
-			onPageChange(currentPage + 1);
 			window.scrollTo(0, 0);
 		}
 	};

@@ -9,7 +9,7 @@ function NavBar(){
         <div className="container-nav">
            
             <div className="logo">
-            <Link to="home">  
+            <Link to="/home">  
                 <img src={logo} alt="logo-videogame"/>
             </Link>
                 <h3>Videogames</h3>

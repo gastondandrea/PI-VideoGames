@@ -1,4 +1,4 @@
-import { GET_ALL_VIDEOGAMES, GET_VIDEOGAME_DETAIL, CLEAN_DETAIL, SEARCH_VIDEOGAMES, FILTER_BY_GENRE, FILTER_BY_SOURCE, ORDER_VIDEOGAMES, POST_VIDEOGAMES, GET_ALL_GENRES} from "../actions/action-types";
+import { GET_ALL_VIDEOGAMES, GET_VIDEOGAME_DETAIL, CLEAN_DETAIL, SEARCH_VIDEOGAMES, FILTER_BY_GENRE, FILTER_BY_SOURCE, ORDER_VIDEOGAMES, POST_VIDEOGAMES, GET_ALL_GENRES, SHOW_ALERT, HIDE_ALERT, SET_IS_LONDING, IS_SEACH} from "../actions/action-types";
 
 const initialState = {
     allVideogames:[],
@@ -8,6 +8,9 @@ const initialState = {
     filterSource: "defect",
     videogameCreate: {},
     allGenres:[],
+    message: null,
+    isLoading: false,
+    isSeach: false,
 }
     
 function reducer(state = initialState, action){
@@ -124,7 +127,27 @@ function reducer(state = initialState, action){
         case GET_ALL_GENRES:
             return {
                 ...state,
-                allGenres: action.payload,
+                allGenres: action.payload
+            };
+        case SHOW_ALERT:
+            return {
+                ...state,
+                message: action.payload
+            };
+        case HIDE_ALERT:
+            return {
+                ...state,
+                message: null
+            };
+        case SET_IS_LONDING:
+        return {
+            ...state,
+            isLoading: action.payload
+        };
+        case IS_SEACH:
+            return {
+                ...state,
+                isSeach: action.payload
             };
         default:
             return {
