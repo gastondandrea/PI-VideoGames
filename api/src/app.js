@@ -15,7 +15,7 @@ server.use(bodyParser.json({ limit: '50mb' }));
 server.use(cookieParser());
 server.use(morgan('dev'));
 server.use((req, res, next) => {
-  const allowedOrigins = ['http://localhost:3000', '*'];
+  const allowedOrigins = ['http://localhost:3000', 'https://pi-videogames-production-b869.up.railway.app'];
   const origin = req.headers.origin;
   if (allowedOrigins.includes(origin)) {
     res.header('Access-Control-Allow-Origin', origin);
